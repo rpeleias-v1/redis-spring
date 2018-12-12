@@ -12,6 +12,7 @@ import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.util.StringUtils;
 
@@ -69,7 +70,13 @@ public class SpringConf {
 
     @Bean
     @Qualifier("listOperations")
-    public ListOperations<String, Programmer> listOperations(RedisTemplate< String, Programmer> redisTemplate) {
+    public ListOperations<String, Programmer> listOperations(RedisTemplate<String, Programmer> redisTemplate) {
         return redisTemplate.opsForList();
+    }
+
+    @Bean
+    @Qualifier("setOperations")
+    public SetOperations<String, Programmer> setOperations(RedisTemplate< String, Programmer> redisTemplate) {
+        return redisTemplate.opsForSet();
     }
 }

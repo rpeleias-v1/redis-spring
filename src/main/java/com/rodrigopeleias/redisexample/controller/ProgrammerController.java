@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class ProgrammerController {
@@ -43,5 +44,20 @@ public class ProgrammerController {
     @GetMapping("/programmers-list/count")
     public Long getProgrammersListCount() {
         return programmerService.getProgrammersListCount();
+    }
+
+    @PostMapping("/programmers-set/count")
+    public void addToProgrammersToSet(@RequestBody Programmer... programmer) {
+        programmerService.addToProgrammersToSet(programmer);
+    }
+
+    @GetMapping("/programmer-set")
+    public Set<Programmer> getProgrammersSetMembers() {
+        return programmerService.getProgrammersSetMembers();
+    }
+
+    @PostMapping("/programmer-set/member")
+    public boolean isSetMember(@RequestBody Programmer programmer) {
+        return programmerService.isSetMember(programmer);
     }
 }

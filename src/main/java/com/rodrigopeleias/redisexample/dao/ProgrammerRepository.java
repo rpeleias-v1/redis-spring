@@ -3,6 +3,7 @@ package com.rodrigopeleias.redisexample.dao;
 import com.rodrigopeleias.redisexample.model.Programmer;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ProgrammerRepository {
 
@@ -15,4 +16,10 @@ public interface ProgrammerRepository {
     List<Programmer> getProgrammersListMembers();
 
     Long getProgrammersListCount();
+
+    void addToProgrammersToSet(Programmer ...programmer);
+
+    Set<Programmer> getProgrammersSetMembers();
+
+    boolean isSetMember(Programmer programmer);
 }
